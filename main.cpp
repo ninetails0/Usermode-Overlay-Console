@@ -28,7 +28,7 @@ HDC hdc;
 
 template<typename ...Arg>
 uint64_t call_hook(const Arg ... args) {
-	void* hooked_function = GetProcAddress(LoadLibrary("win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics");
+	void* hooked_function = GetProcAddress(LoadLibrary("win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics"); // The function that we are hooking
 	auto function = static_cast<uint64_t(__stdcall*)(Arg...)>(hooked_function);
 
 	return function(args ...);
